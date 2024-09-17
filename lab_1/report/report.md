@@ -53,29 +53,29 @@ server {
 
 ```
 	server {
-        listen       443 ssl;
-        server_name  site-1.ru;
+        	listen       443 ssl;
+        	server_name  site-1.ru;
 
-        ssl_certificate      "D:\certificates\site-1.ru\certificate.crt";
-        ssl_certificate_key  "D:\certificates\site-1.ru\private.key";
+        	ssl_certificate      "D:\certificates\site-1.ru\certificate.crt";
+        	ssl_certificate_key  "D:\certificates\site-1.ru\private.key";
 		
 		root   "D:\ITMO\DevOps_and_Clouds\DevOps_lab_1\site-1";
 		index  index.html;
-    }
+    	}
 	
-    server {
-        listen       443 ssl;
-        server_name  site-2.ru;
+    	server {
+        	listen       443 ssl;
+        	server_name  site-2.ru;
 
-        ssl_certificate      "D:\certificates\site-2.ru\certificate.crt";
-        ssl_certificate_key  "D:\certificates\site-2.ru\private.key";
+        	ssl_certificate      "D:\certificates\site-2.ru\certificate.crt";
+        	ssl_certificate_key  "D:\certificates\site-2.ru\private.key";
 
 		root   "D:\ITMO\DevOps_and_Clouds\DevOps_lab_1\site-2";
-        index  index.html;
-    }
+        	index  index.html;
+    	}
 ```
 
-После сохранения изменений в конфигурационном файле, если nginx уже был запущен, не обходимо в Командной строке Windows прописать команду `nginx -s reload` для запуска новых рабочих процессов с новой конфигурацией. Если nginx не был запущен до внесения правок, то достаточно его просто запустить. Проверить, запущен ли nginx, можно в Диспетчере задач во вкладке "Фоновые процессы".
+После сохранения изменений в конфигурационном файле, если nginx уже был запущен, необходимо в Командной строке Windows прописать команду `nginx -s reload` для запуска новых рабочих процессов с новой конфигурацией. Если nginx не был запущен до внесения правок, то достаточно его просто запустить. Проверить, запущен ли nginx, можно в Диспетчере задач во вкладке "Фоновые процессы".
 
 Теперь всё должно работать. Вводим `site-1.ru` в адресной строке браузера и переходим на страницу. Если на компьютере установлен антивирус, то, вероятно, он предупредит о переходе на недостоверный сайт. Это происходит из-за самоподписанного сертификата, так как такой сертификат не заверяется проверенным удостоверяющим центром. Однако мы уверены в безопасности нашего сайта, поэтому нажимаем "перейти на сайт".
 ![Antivirus.png](Antivirus.png)
