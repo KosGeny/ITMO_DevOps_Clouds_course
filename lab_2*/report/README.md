@@ -51,9 +51,9 @@ services:
 
 Убедимся, что и с "плохим" docker-compose файлом всё работает.
 
-![Pasted image 20241119235834.png](Pasted image 20241119235834.png)
+![bad_docker-compose.png](bad_docker-compose.png)
 
-![Pasted image 20241120000217.png](Pasted image 20241120000217.png)
+![bad_docker-compose_connect_db.png](bad_docker-compose_connect_db.png)
 
 Приложение сообщило, что подключение к базе данных прошло успешно, значит наши контейнеры видят друг друга.
 
@@ -101,8 +101,8 @@ volumes:
 
 Проверяем, что ничего не поломалось и всё работает)
 
-![Pasted image 20241120010739.png](Pasted image 20241120010739.png)
-![Pasted image 20241120010702.png](Pasted image 20241120010702.png)
+![good_docker-compose.png](good_docker-compose.png)
+![good_docker-compose_connect_db.png](good_docker-compose_connect_db.png)
 
 Супер! Теперь опишем, что было сделано.
 
@@ -242,10 +242,10 @@ networks:
 Теперь контейнеры поднимаются вместе, но не видят друг друга по сети.
 
 Проверяем, что всё собралось.
-![Pasted image 20241120141336.png](Pasted image 20241120141336.png)
+![two_networks.png](two_networks.png)
 
 Убедимся, что контейнер `my-python-app` не видит контейнер `mysql`:
-![Pasted image 20241120141359.png](Pasted image 20241120141359.png)
+![two_networks_connect_db.png](two_networks_connect_db.png)
 
 ## Вывод
 В ходе выполнения лабораторной работы мы изучили новую для себя технологию и попрактиковались поднимать контейнеры с помощью docker-compose, разобрали часто встречающиеся плохие практики и то, как их надо исправлять. Техническое задание выполнено. Приступаем к облачным лабам)))
