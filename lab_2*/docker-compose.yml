@@ -1,0 +1,47 @@
+version: "3"
+
+services:
+  my-python-app:
+    build:
+      context: app
+    container_name: my-python-app
+    ports:
+      - "8080:80"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks:
+      - python-app-network
+      
+  mysql:
+    image: mysql:8.4
+    container_name: mysql
+    ports:
+      - "127.0.0.1:3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 20s
+      retries: 5
+    networks:
+      - mysql-network
+    
+volumes:
+  mysql-data:
+
+networks:
+  mysql-network:
+    driver: bridge
+  python-app-network:
+    driver: bridge
