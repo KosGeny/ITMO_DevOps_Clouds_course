@@ -150,7 +150,7 @@ jobs:
 ```
 ### Проверка работы:
 ![image](https://github.com/user-attachments/assets/58ae87cf-7c4b-430a-b780-d117e8f0d49e)
-### Best Practices:
+### Good Practices:
 
 1. **Фиксированная версия OS**:
    Задание определенной версии, например, `ubuntu-20.04`, обеспечивает стабильность и уверенность, что она не изменится без нашего вмешательства.
@@ -202,7 +202,7 @@ jobs:
 _______
 # Выводы
 
-Пока выполняли лабу познакомились с GitHub Actions и GitLab, узнали о пайплайназ и джобах, написали несколько best practices
+Пока выполняли лабу познакомились с GitHub Actions и GitLab, узнали о пайплайназ и джобах, написали несколько good practices
 И познали занак бесконечности
 
 ![image](https://github.com/user-attachments/assets/4943abe3-9474-43c3-89f3-bd8983528be7)
