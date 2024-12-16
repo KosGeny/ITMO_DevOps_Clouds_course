@@ -116,7 +116,7 @@ jobs:
 
   test:
     name: test_job
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04
     needs: build
 
     steps:
@@ -201,7 +201,8 @@ jobs:
 
 _______
 # Выводы
-Пока мы выполняли лабу познакомились с GitHub Actions и GitLab, узнали о пайплайназ и джобах, написали несколько best practices
+
+Пока выполняли лабу познакомились с GitHub Actions и GitLab, узнали о пайплайназ и джобах, написали несколько best practices
 И познали занак бесконечности
 
 ![image](https://github.com/user-attachments/assets/4943abe3-9474-43c3-89f3-bd8983528be7)
@@ -211,7 +212,7 @@ _______
 На всякий случай вот еще скрины и ссылка на репозиторий, где запускались пайплайны: [GitHub Hello Repository](https://github.com/Gppovrm/cicd) 
 
 - для BAD
-![image](https://github.com/user-attachments/assets/1053ef98-50c2-4182-81f9-fd8c355a60eb)
+![image](https://github.com/user-attachments/assets/54793cb1-a319-4b83-adfe-49a9c725bb4d)
 ![image](https://github.com/user-attachments/assets/f30a4cdb-edf5-4d09-9b08-96c19d224943)
 
 - для GOOD
