@@ -1,0 +1,26 @@
+name: CI/CD bad_practices
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  all_in_one:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-python@v2
+
+      - run: pip install -r requirements.txt
+
+      - run: python hello.py
+
+      - run: python -m unittest discover
+
+      - run: echo "Deploying application..."
