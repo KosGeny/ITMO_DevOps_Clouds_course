@@ -31,9 +31,6 @@ on:
   push:
     branches:
       - master
-  pull_request:
-    branches:
-      - master
 
 jobs:
   all_in_one:
@@ -78,9 +75,6 @@ name: CI/CD good_practices
 
 on:
   push:
-    branches:
-      - master
-  pull_request:
     branches:
       - master
 
