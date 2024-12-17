@@ -105,8 +105,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install Doppler CLI
-      run: |
-        sudo curl -Ls https://cli.doppler.com/install.sh | sudo sh
+      uses: dopplerhq/cli-action@v1
 
     - name: Doppler Fetch and Show secrets
       env:
@@ -136,8 +135,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install Doppler CLI
-      run: |
-        sudo curl -Ls https://cli.doppler.com/install.sh | sudo sh
+      uses: dopplerhq/cli-action@v1
 
     - name: Doppler Fetch and Export secrets
       env:
@@ -195,8 +193,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install Doppler CLI
-      run: |
-        sudo curl -Ls https://cli.doppler.com/install.sh | sudo sh
+      uses: dopplerhq/cli-action@v1
 
     - name: Doppler Fetch and Export secrets
       env:
