@@ -2,8 +2,14 @@
 
 Выполнили: Генне Константин K3240 и Савченко Анастасия K3241
 
-Мы выбрали в качестве секретохранилки Doppler тк он легко интегрируется в GitHub Actions
-## Интеграция Doppler и GitHub Actions
+## Техническое задание
+- Поднять секретохранилку
+- Описать почему наш способ хорош
+- Описать почему хранение секретов в CI/CD переменных репозитория не является хорошей практикой
+  
+### !Мы выбрали в качестве секретохранилки Doppler тк он легко интегрируется в GitHub Actions
+
+# Интеграция Doppler и GitHub Actions
 
 ## Шаг 1: Установка Doppler через командную строку
 
@@ -21,10 +27,10 @@
     Doppler Error: you do not have access to any projects
     ```
 
-## Теория
+## Шаг 2: Добавляем секреты работаем с Doppler
 
+### Notes:
 ### Connection: Doppler –auth– GitHub
-
 ### Syncs: CI/CD –sync– GitHub
 
 Мы будем использовать **GitHub Actions**.
@@ -43,23 +49,30 @@
 ![image](https://github.com/user-attachments/assets/dccd19aa-cd54-492f-a78d-7465283769e5)
 
 4. Переходим на страницу проекта, где видим статус синхронизации (**in sync status**).
+
 ![image](https://github.com/user-attachments/assets/98078c4a-10b5-4203-a5ea-85221a955661)
 
 5. Переходим по ссылке **Destination**, которая ведет на страницу секретов репозитория, где видим добавленные секреты.
+
 ![image](https://github.com/user-attachments/assets/155401a5-462b-4d25-870b-5c4d4b5d26ab)
-Но мы вводили 5 секретов а тут види 8 это потому что 3 из них addition of Doppler's standard meta variables
+
+Но мы вводили 5 секретов а тут види 8 это потому что 3 из них addition of Doppler's standard meta variables, они генерируются автоматически
+
 ![image](https://github.com/user-attachments/assets/1da2f2a7-6b01-40ed-b30a-4156764e10f7)
 
-## Генерация токена и настройка GitHub
+## Шаг 3: Генерация токена и настройка GitHub
+Переходим в **Access** и генерируем токен:
+
 ![image](https://github.com/user-attachments/assets/a8e927eb-a9ec-4824-9baf-3ef6db71aafa)
 
 Сгенерировав, переходим в репозиторий:
     - **Settings** → **Secrets and variables** → **Actions**.
     - Создаем секрет `DOPPLER_TOKEN`, в него вставляем скопированный токен.
+
 ![image](https://github.com/user-attachments/assets/76078e52-7562-44ff-a942-0a2adf7af709)
-## Наконец пишем CI/CD
-### Вывод секретов в логах
-название(see_secrets_in_logs)
+##  Шаг 4: Наконец пишем CI/CD
+## Проверим сделав вывод секретов в логах
+название(see_secrets_in_logs.yml)
 ```yml
 name: CI/CD doppler_secrets
 
@@ -87,11 +100,12 @@ jobs:
         doppler secrets download --format env --no-file > doppler_secrets.env
         cat doppler_secrets.env
 ```
-И наконец мы видим наши секреты про единорогов в логах
+И ,наконец, мы видим наши секреты про единорогов в логах:
+
 ![image](https://github.com/user-attachments/assets/73d328a3-78bf-469f-8b69-8d4c7134f8d6)
 
-## Если задание состоит именно в том чтобы не светить секреты в логах но сделать с ними что-о тот вот (видим ключи секретов но не значения и обязательно проверяем что секреты получены):
- название(see_in_logs_secrets_keys_but_not_values)
+## Если задание состоит именно в том, чтобы не светить секреты в логах, но делать с ними что-то, то вот: 
+ название(see_in_logs_secrets_keys_but_not_values.yml)
 ```yml
 name: CI/CD doppler_secrets
 on:
@@ -144,10 +158,12 @@ jobs:
         echo "Выполняем вызов API"
         # curl -H "Authorization: Bearer $API_KEY" $SERVER_ENDPOINT
 ```
+(видим ключи секретов, но не значения(***) и обязательно проверяем, что секреты получены):
+
 ![image](https://github.com/user-attachments/assets/a27455eb-deee-4e6f-9895-0a2f227940e2)
 
-## Вот вообще не светятся секреты в логах ( обязательно проверяем что секреты получены +примеры использования для подклучения ДБ или API)
- название(NO_shwoing_secrets_in_logs)
+## Вот вообще не светим секреты в логах ( обязательно проверяем, что секреты получены, + в примере использование секретов для подклучения ДБ и API)
+название(non_showing_secrets_in_logs.yml)
 ```yml
 name: CI/CD doppler_secrets
 
@@ -199,11 +215,18 @@ jobs:
         echo "Вызов API"
         # curl -H "Authorization: Bearer $API_KEY" $SERVER_ENDPOINT
 ```
+Видим, фразу, что все секреты успешно получины и в примере используем их для подклучения 
+
 ![image](https://github.com/user-attachments/assets/ca9ef87e-21bf-44d1-8b0e-7f1f901dfd96)
 
-### Ссылка на репозиторий где чекались пайплайны: https://github.com/Gppovrm/-doppler_cicd/actions/runs/12377371561/job/34546722875
+### Ссылка на репозиторий, где чекались пайплайны:[GitHub doppler_ci/cd Repository](https://github.com/Gppovrm/-doppler_cicd/actions) 
+
+## Итоги
+### Почему наш способ (Doppler) красивый:
+
+### Почему хранение секретов в CI/CD переменных репозитория не является хорошей практикой:
 
 ## Дополнительный пункт 
-  Секреты также очень легко получать и добавлять/удалять используя командную строку(для этого нужно установить doppler, залогиниться, и выполнить команду ‘doppler setup’, которая позволит вам выбрать один из ваших проектов doppler, для просмотра используйте команду doppler setup)
+  Секреты также очень легко получать, добавлять/удалять, используя командную строку, для этого нужно установить doppler, залогиниться, и выполнить команду `doppler setup`, которая позволит вам выбрать один из ваших проектов doppler, для просмотра используйте команду `doppler setup`:
 
 ![Снимок экрана 2024-12-17 153728](https://github.com/user-attachments/assets/6701a40e-47c7-421c-ac99-b91fc7c0e472)
