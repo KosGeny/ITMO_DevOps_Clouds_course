@@ -105,7 +105,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install Doppler CLI
-      uses: dopplerhq/cli-action@v1
+      uses: dopplerhq/cli-action@v3
 
     - name: Doppler Fetch and Show secrets
       env:
@@ -135,7 +135,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install Doppler CLI
-      uses: dopplerhq/cli-action@v1
+      uses: dopplerhq/cli-action@v3
 
     - name: Doppler Fetch and Export secrets
       env:
@@ -193,7 +193,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Install Doppler CLI
-      uses: dopplerhq/cli-action@v1
+      uses: dopplerhq/cli-action@v3
 
     - name: Doppler Fetch and Export secrets
       env:
