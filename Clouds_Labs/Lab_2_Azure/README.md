@@ -63,7 +63,8 @@ PaaS, которая предоставляет модели данных кор
 
 В результате сопоставления имеющейся информации с документацией Azure и некоторых домыслов и умозаключений мы получили следующую [таблицу](https://docs.google.com/spreadsheets/d/1DDJCFkE-3Z3GqGsiT77gKYvkWfHuu-zPSZ19q-J4y88/edit?usp=sharing):
 
-![image](https://github.com/user-attachments/assets/49ba6edc-b91c-4f8e-9c99-99e9bd6adda3)
+![image](https://github.com/user-attachments/assets/259e8788-97e2-439c-8c61-eebf5123504d)
+
 
 
 
